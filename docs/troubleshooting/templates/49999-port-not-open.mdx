@@ -19,10 +19,6 @@ The reason for this is that either the default start command is not specified on
 
 With the current build system, you need to use the `code-interpreter` as a base template in your template definition.
 
-<Note>
-    The default start command for the `code-interpreter` template is `/root/.jupyter/start-up.sh`.
-</Note>
-
 <CodeGroup>
 ```js JavaScript & TypeScript
 import { Template } from '@e2b/code-interpreter'
@@ -33,6 +29,33 @@ const template = Template().fromTemplate("code-interpreter-v1")
 from e2b_code_interpreter import Template
 
 template = Template().from_template("code-interpreter-v1")
+```
+</CodeGroup>
+
+<Note>
+We strongly recommend building custom template via the previous example. However, if you choose to build from docker image, do as follows.
+</Note>
+
+<CodeGroup>
+```ts JavaScript & TypeScript
+import { Template, waitForURL } from '@e2b/code-interpreter'
+
+const template = Template()
+    .fromImage("e2bdev/code-interpreter:latest")
+    .setStartCmd(
+        "sudo /root/.jupyter/start-up.sh", waitForURL("http://localhost:49999/health")
+    )
+```
+```python Python
+from e2b_code_interpreter import Template, wait_for_url
+
+template = (
+    Template()
+    .from_image("e2bdev/code-interpreter:latest")
+    .set_start_cmd(
+        "sudo /root/.jupyter/start-up.sh", wait_for_url("http://localhost:49999/health")
+    )
+)
 ```
 </CodeGroup>
 

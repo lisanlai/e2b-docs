@@ -24,7 +24,7 @@ To use the Google Cloud Storage we need to install the `gcsfuse` package. There'
 
 ```ts JavaScript & TypeScript
 const template = Template()
-  .fromImage("e2bdev/code-interpreter:latest")
+  .fromTemplate("code-interpreter-v1")
   .aptInstall(["gnupg", "lsb-release"])
   .runCmd("lsb_release -c -s > /tmp/lsb_release")
   .runCmd(
@@ -34,14 +34,13 @@ const template = Template()
     "curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc",
   )
   .aptInstall(["gcsfuse"])
-  .setStartCmd("sudo /root/.jupyter/start-up.sh", waitForPort(49999));
 ```
 
 
 ```python Python
 template = (
     Template()
-    .from_image("e2bdev/code-interpreter:latest")
+    .from_template("code-interpreter-v1")
     .apt_install(["gnupg", "lsb-release"])
     .run_cmd("lsb_release -c -s > /tmp/lsb_release")
     .run_cmd(
@@ -51,7 +50,6 @@ template = (
         "curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc"
     )
     .apt_install(["gcsfuse"])
-    .set_start_cmd("sudo /root/.jupyter/start-up.sh", wait_for_port(49999))
 )
 ```
 

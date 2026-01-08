@@ -5,6 +5,15 @@ sidebarTitle: Lifecycle
 
 When you start the sandbox, it stays alive for 5 minutes by default but you can change it by passing the `timeout` parameter.
 After the time passes, the sandbox will be automatically shutdown.
+
+<Warning>
+The maximum time sandbox can be kept running without being paused is 
+- 24 hours on the Pro Tier
+- 1 hour on the Base Tier
+
+For more details, please refer to [sandbox persistance page](/docs/sandbox/persistence#limitations-while-in-beta).
+</Warning>
+
 <CodeGroup>
 ```js JavaScript & TypeScript highlight={6}
 import { Sandbox } from '@e2b/code-interpreter'
@@ -29,12 +38,12 @@ sandbox = Sandbox.create(
 
 ## Change sandbox timeout during runtime
 
-You can change the sandbox timeout when it's running by calling the the `setTimeout` method in JavaScript or `set_timeout` method in Python.
+You can change the sandbox timeout when it's running by calling the `setTimeout` method in JavaScript or `set_timeout` method in Python.
 
 When you call the set timeout method, the sandbox timeout will be reset to the new value that you specified.
 
 This can be useful if you want to extend the sandbox lifetime when it's already running.
-You can for example start with a sandbox with 1 minute timeout and then periodically call set timout every time user interacts with it in your app.
+You can for example start with a sandbox with 1 minute timeout and then periodically call set timeout every time user interacts with it in your app.
 
 <CodeGroup>
 ```js JavaScript & TypeScript
