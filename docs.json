@@ -107,7 +107,8 @@
               "docs/template/defining-template",
               "docs/template/start-ready-command",
               "docs/template/build",
-              "docs/template/aliases",
+              "docs/template/names",
+              "docs/template/tags",
               "docs/template/logging",
               "docs/template/error-handling",
               {
@@ -282,6 +283,11 @@
     }
   },
   "redirects": [
+    {
+      "source": "/docs/template/aliases",
+      "destination": "/docs/template/names",
+      "permanent": true
+    },
     {
       "source": "/docs/sandbox-templates/overview",
       "destination": "/docs/sandbox-template",

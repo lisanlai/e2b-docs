@@ -43,9 +43,8 @@ To force rebuild the whole template, you can use also `skipCache`/`skip_cache` p
 
 <CodeGroup>
 
-```typescript JavaScript & TypeScript wrap highlight={3}
-Template.build(template, {
-  alias: 'my-template',
+```typescript JavaScript & TypeScript wrap highlight={2}
+Template.build(template, 'my-template', {
   skipCache: true, // Configure cache skip (except for files)
 })
 ```
@@ -53,7 +52,7 @@ Template.build(template, {
 ```python Python wrap highlight={4}
 Template.build(
     template,
-    alias="my-template",
+    'my-template',
     skip_cache=True,  # Configure cache skip (except for files)
 )
 ```
@@ -91,7 +90,7 @@ template = (
 
 ## Use Case for Caching
 You can leverage caching to create templates with multiple variants (e.g., different RAM or CPU) while reusing the common layers.
-When building the template, just change the template alias to a specific RAM/CPU configuration (e.g., `my-template-2cpu-2gb`, `my-template-1cpu-4gb`), keep the rest of the template definition the same, and the build process will reuse the cached layers.
+When building the template, just change the template name to a specific RAM/CPU configuration (e.g., `my-template-2cpu-2gb`, `my-template-1cpu-4gb`), keep the rest of the template definition the same, and the build process will reuse the cached layers.
 
 ## Optimize Build Times
 To optimize build times, place frequently changing commands (e.g., copying source code) towards the end of your template definition. This way, earlier layers can be cached and reused more often.
