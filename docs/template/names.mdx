@@ -38,16 +38,18 @@ sandbox = Sandbox.create('my-python-env')
 
 </CodeGroup>
 
-## Uniqueness Requirement
+## Team-Local Naming
 
-<Warning>
-Template names must be **globally unique across the entire E2B platform**, not just within your team or account. This means if another user has already claimed a name, you cannot use it for your template.
-</Warning>
+Template names are scoped to your team. This means:
 
-When choosing a name, consider using:
-- Your company or project name as a prefix (e.g., `acme-api-server`)
-- Version numbers or environment indicators (e.g., `myapp-v2`, `myapp-staging`)
-- Descriptive names that indicate the template's purpose (e.g., `data-analysis-python`)
+- Your template named `my-app` is stored as `your-team-slug/my-app`
+- You can reference it simply as `my-app` within your team
+- Other teams can have their own `my-app` template without conflict
+- Public templates should be referenced using the full namespaced format (`team-slug/template-name`)
+
+<Info>
+**Backwards Compatibility**: Existing public templates remain accessible without the team slug prefix. New public templates should be referenced using the full namespaced format (`team-slug/template-name`).
+</Info>
 
 ## Common Use Cases
 
@@ -137,7 +139,7 @@ When building variants with the same template definition but different CPU/RAM c
 
 ## Checking Name Availability
 
-You can check if a name is already in use with the `exists` method.
+You can check if a name is already in use within your team with the `exists` method.
 
 <CodeGroup>
 
@@ -162,4 +164,3 @@ print(f"Name {'is taken' if exists else 'is available'}")
 1. **Use descriptive names**: Choose names that clearly indicate the template's purpose or configuration
 2. **Use tags for versioning**: Instead of baking version numbers into names, use [tags](/docs/template/tags) for version management (e.g., `myapp:v1`, `myapp:v2`)
 3. **Use consistent naming**: Establish a naming convention for your team and stick to it
-4. **Document your names**: Keep a record of which names are used for which purposes in your team

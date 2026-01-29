@@ -81,7 +81,8 @@ template.from_image("custom-image:latest")
 template.from_base_image()  # e2bdev/base
 
 # Build from existing template
-template.from_template("existing-template-alias")
+template.from_template("my-template")  # Your team's template
+template.from_template("acme/other-template")  # Full namespaced reference
 
 # Parse and build from Dockerfile
 template.from_dockerfile("Dockerfile")

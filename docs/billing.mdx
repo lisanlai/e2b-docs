@@ -43,8 +43,7 @@ You can customize allocated CPU and RAM when building custom templates by specif
 ```js JavaScript & TypeScript
 import { Template, defaultBuildLogger } from 'e2b'
 
-await Template.build(template, {
-  alias: "my-template",
+await Template.build(template, 'my-template', {
   cpuCount: 8,
   memoryMB: 4096,
   onBuildLogs: defaultBuildLogger(),
@@ -55,7 +54,7 @@ from e2b import Template, default_build_logger
 
 Template.build(
     template,
-    alias="my-template",
+    'my-template',
     cpu_count=8,
     memory_mb=4096,
     on_build_logs=default_build_logger(),
