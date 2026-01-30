@@ -34,9 +34,9 @@ Choose from predefined base images or use custom ones:
 
 ```typescript JavaScript & TypeScript
 // Predefined base images
-template.fromUbuntuImage("lts"); // ubuntu:lts
+template.fromUbuntuImage("jammy"); // ubuntu:jammy
 template.fromUbuntuImage("22.04"); // ubuntu:22.04
-template.fromDebianImage("slim"); // debian:slim
+template.fromDebianImage("stable-slim"); // debian:stable-slim
 template.fromDebianImage("bullseye"); // debian:bullseye
 template.fromPythonImage("3.13"); // python:3.13
 template.fromPythonImage("3.11"); // python:3.11
@@ -64,9 +64,9 @@ template.fromDockerfile(dockerfileContent);
 
 ```python Python
 # Predefined base images
-template.from_ubuntu_image("lts")  # ubuntu:lts
+template.from_ubuntu_image("jammy")  # ubuntu:jammy
 template.from_ubuntu_image("22.04")  # ubuntu:22.04
-template.from_debian_image("slim")  # debian:slim
+template.from_debian_image("stable-slim")  # debian:stable-slim
 template.from_debian_image("bullseye")  # debian:bullseye
 template.from_python_image("3.13")  # python:3.13
 template.from_python_image("3.11")  # python:3.11
