@@ -82,6 +82,7 @@
               "docs/sandbox/lifecycle-events-api",
               "docs/sandbox/lifecycle-events-webhooks",
               "docs/sandbox/persistence",
+              "docs/sandbox/git-integration",
               "docs/sandbox/metrics",
               "docs/sandbox/metadata",
               "docs/sandbox/environment-variables",
@@ -150,12 +151,6 @@
               "docs/commands",
               "docs/commands/streaming",
               "docs/commands/background"
-            ]
-          },
-          {
-            "group": "Git",
-            "pages": [
-              "docs/git"
             ]
           },
           {
@@ -332,6 +327,11 @@
     {
       "source": "/docs/getting-started/installation",
       "destination": "/docs/quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/docs/git",
+      "destination": "/docs/sandbox/git-integration",
       "permanent": true
     }
   ]
