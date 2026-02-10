@@ -4,37 +4,69 @@ sidebarTitle: Home
 icon: house
 ---
 
-import { Concepts } from '/snippets/Concepts.jsx';
-import { CodeInterpreting } from '/snippets/CodeInterpreting.jsx';
 import { Quickstart } from '/snippets/Quickstart.jsx';
 
-Here you'll find all the guides, concepts, and SDK references for developing with E2B.
+## What is E2B?
+
+E2B provides isolated sandboxes that let agents safely execute code, process data, and run tools. Our SDKs make it easy to start and manage these environments.
+
+Spin up a sandbox and run code in a few lines:
 
 <CodeGroup>
 ```bash JavaScript & TypeScript
-npm i @e2b/code-interpreter
+npm i e2b
 ```
 ```bash Python
-pip install e2b-code-interpreter
+pip install e2b
 ```
 </CodeGroup>
 
-## What is E2B?
-E2B is an [open-source](https://github.com/e2b-dev) infrastructure that allows you to run AI-generated code in secure isolated sandboxes in the cloud.
-To start and control sandboxes, use our [Python SDK](https://pypi.org/project/e2b/) or [JavaScript SDK](https://www.npmjs.com/package/e2b).
+<CodeGroup>
+```javascript JavaScript & TypeScript
+import { Sandbox } from 'e2b'
 
-Some of the typical use cases for E2B are AI data analysis or visualization, running AI-generated code of various languages, playground for coding agents, environment for codegen evals, or running full AI-generated apps like in [Fragments](https://github.com/e2b-dev/fragments).
+const sandbox = await Sandbox.create() // Needs E2B_API_KEY environment variable
+const result = await sandbox.commands.run('echo "Hello from E2B Sandbox!"')
+console.log(result.stdout)
+```
+```python Python
+from e2b import Sandbox
 
-### Under the hood
-The E2B Sandbox is a small isolated VM the can be started very quickly (~150ms). You can think of it as a small computer for the AI model. You can run many sandboxes at once. Typically, you run separate sandbox for each LLM, user, or AI agent session in your app.
-For example, if you were building an AI data analysis chatbot, you would start the sandbox for every user session.
+sandbox = Sandbox.create()  # Needs E2B_API_KEY environment variable
+result = sandbox.commands.run('echo "Hello from E2B Sandbox!"')
+print(result.stdout)
+```
+</CodeGroup>
+
+## E2B Building Blocks
+
+A quick overview of the core building blocks you'll interact with when using E2B.
+
+- [**Sandbox**](/docs/sandbox) — A fast, secure Linux VM created on demand for your agent
+
+- [**Template**](/docs/template/quickstart) — Defines what environment a sandbox starts with
+
+## How to use the docs
+
+The documentation is split into three main sections:
+
+- [**Quickstart**](#quickstart) — Step-by-step tutorials that walk you through spinning up your first E2B sandboxes.
+
+- [**Examples**](#examples) — In-depth tutorials focused on specific use cases. Pick the topics that match what you're building.
+
+- [**SDK Reference**](https://e2b.dev/docs/sdk-reference) — A complete technical reference for every SDK method, parameter, and configuration option.
 
 ## Quickstart
-<Quickstart/>
 
-## Code interpreting with AI
-<CodeInterpreting/>
+<Quickstart />
 
-## Learn the core concepts
-<Concepts/>
+## Examples
 
+<CardGroup cols={2}>
+  <Card title="Computer Use" icon="desktop" href="/docs/use-cases/computer-use">
+    Build AI agents that see, understand, and control virtual Linux desktops using E2B Desktop sandboxes.
+  </Card>
+  <Card title="GitHub Actions CI/CD" icon="gears" href="/docs/use-cases/ci-cd">
+    Run AI-powered code review, testing, and validation in secure E2B sandboxes from your GitHub Actions workflows.
+  </Card>
+</CardGroup>
