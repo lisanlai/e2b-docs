@@ -1,2 +1,7 @@
 .idea
 .DS_Store
+
+node_modules
+
+# Generated SDK navigation (intermediate file)
+sdk_navigation.json
