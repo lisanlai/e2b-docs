@@ -1,17 +1,17 @@
 ---
 title: "AMP"
 description: "Run AMP in a secure E2B sandbox with full filesystem, terminal, and git access."
-icon: "/images/icons/amp-code.svg"
+icon: "/images/icons/amp.svg"
 ---
 
-[AMP](https://ampcode.com) is Sourcegraph's coding agent with multi-model architecture and built-in code intelligence. E2B provides a pre-built `amp-code` template with AMP already installed.
+[AMP](https://ampcode.com) is Sourcegraph's coding agent with multi-model architecture and built-in code intelligence. E2B provides a pre-built `amp` template with AMP already installed.
 
 ## CLI
 
 Spin up a sandbox with the [E2B CLI](/docs/cli).
 
 ```bash
-e2b sbx create amp-code
+e2b sbx create amp
 ```
 
 Once inside the sandbox, start AMP.
@@ -28,7 +28,7 @@ Use `-x` for non-interactive mode and `--dangerously-allow-all` to auto-approve 
 ```typescript JavaScript & TypeScript
 import { Sandbox } from 'e2b'
 
-const sandbox = await Sandbox.create('amp-code', {
+const sandbox = await Sandbox.create('amp', {
   envs: { AMP_API_KEY: process.env.AMP_API_KEY },
 })
 
@@ -43,7 +43,7 @@ await sandbox.kill()
 import os
 from e2b import Sandbox
 
-sandbox = Sandbox.create("amp-code", envs={
+sandbox = Sandbox.create("amp", envs={
     "AMP_API_KEY": os.environ["AMP_API_KEY"],
 })
 
@@ -62,7 +62,7 @@ sandbox.kill()
 ```typescript JavaScript & TypeScript
 import { Sandbox } from 'e2b'
 
-const sandbox = await Sandbox.create('amp-code', {
+const sandbox = await Sandbox.create('amp', {
   envs: { AMP_API_KEY: process.env.AMP_API_KEY },
   timeoutMs: 600_000,
 })
@@ -88,7 +88,7 @@ await sandbox.kill()
 import os
 from e2b import Sandbox
 
-sandbox = Sandbox.create("amp-code", envs={
+sandbox = Sandbox.create("amp", envs={
     "AMP_API_KEY": os.environ["AMP_API_KEY"],
 }, timeout=600)
 
@@ -119,7 +119,7 @@ Use `--stream-json` to get a real-time JSONL event stream with rich metadata —
 ```typescript JavaScript & TypeScript
 import { Sandbox } from 'e2b'
 
-const sandbox = await Sandbox.create('amp-code', {
+const sandbox = await Sandbox.create('amp', {
   envs: { AMP_API_KEY: process.env.AMP_API_KEY },
 })
 
@@ -146,7 +146,7 @@ import os
 import json
 from e2b import Sandbox
 
-sandbox = Sandbox.create("amp-code", envs={
+sandbox = Sandbox.create("amp", envs={
     "AMP_API_KEY": os.environ["AMP_API_KEY"],
 })
 
@@ -178,7 +178,7 @@ AMP persists conversations as threads that can be resumed or continued with foll
 ```typescript JavaScript & TypeScript
 import { Sandbox } from 'e2b'
 
-const sandbox = await Sandbox.create('amp-code', {
+const sandbox = await Sandbox.create('amp', {
   envs: { AMP_API_KEY: process.env.AMP_API_KEY },
   timeoutMs: 600_000,
 })
@@ -209,7 +209,7 @@ import os
 import json
 from e2b import Sandbox
 
-sandbox = Sandbox.create("amp-code", envs={
+sandbox = Sandbox.create("amp", envs={
     "AMP_API_KEY": os.environ["AMP_API_KEY"],
 }, timeout=600)
 
@@ -238,7 +238,7 @@ sandbox.kill()
 
 ## Build a Custom Template
 
-If you need to customize the environment (e.g. pre-install dependencies, add config files), build your own template on top of the pre-built `amp-code` template.
+If you need to customize the environment (e.g. pre-install dependencies, add config files), build your own template on top of the pre-built `amp` template.
 
 <CodeGroup>
 ```typescript JavaScript & TypeScript
@@ -246,7 +246,7 @@ If you need to customize the environment (e.g. pre-install dependencies, add con
 import { Template } from 'e2b'
 
 export const template = Template()
-  .fromTemplate('amp-code')
+  .fromTemplate('amp')
 ```
 ```python Python
 # template.py
@@ -254,7 +254,7 @@ from e2b import Template
 
 template = (
     Template()
-    .from_template("amp-code")
+    .from_template("amp")
 )
 ```
 </CodeGroup>
@@ -265,7 +265,7 @@ template = (
 import { Template, defaultBuildLogger } from 'e2b'
 import { template as ampTemplate } from './template'
 
-await Template.build(ampTemplate, 'my-amp-code', {
+await Template.build(ampTemplate, 'my-amp', {
   cpuCount: 2,
   memoryMB: 2048,
   onBuildLogs: defaultBuildLogger(),
@@ -276,7 +276,7 @@ await Template.build(ampTemplate, 'my-amp-code', {
 from e2b import Template, default_build_logger
 from template import template as amp_template
 
-Template.build(amp_template, "my-amp-code",
+Template.build(amp_template, "my-amp",
     cpu_count=2,
     memory_mb=2048,
     on_build_logs=default_build_logger(),
