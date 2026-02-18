@@ -50,6 +50,15 @@
             ]
           },
           {
+            "group": "Agents in Sandbox",
+            "pages": [
+              "docs/agents/amp-code",
+              "docs/agents/claude-code",
+              "docs/agents/codex",
+              "docs/agents/opencode"
+            ]
+          },
+          {
             "group": "Code Interpreting",
             "pages": [
               {

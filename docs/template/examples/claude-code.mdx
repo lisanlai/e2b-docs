@@ -3,6 +3,9 @@ title: "Claude Code"
 description: "Claude Code Agent available in a sandbox"
 ---
 
+<Info>
+For a complete guide on running Claude Code in E2B sandboxes — including working with repositories, streaming output, and connecting MCP tools — see the [Agents in Sandbox: Claude Code](/docs/agents/claude-code) guide.
+</Info>
 
 <CodeGroup>
 
@@ -82,7 +85,7 @@ console.log('Sandbox created', sbx.sandboxId)
 
 // Run a prompt with Claude Code
 const result = await sbx.commands.run(
-  `echo 'Create a hello world index.html' | claude -p --dangerously-skip-permissions`,
+  `claude --dangerously-skip-permissions -p 'Create a hello world index.html'`,
   { timeoutMs: 0 }
 )
 
@@ -109,7 +112,7 @@ print("Sandbox created", sbx.sandbox_id)
 
 # Run a prompt with Claude Code
 result = sbx.commands.run(
-    "echo 'Create a hello world index.html' | claude -p --dangerously-skip-permissions",
+    "claude --dangerously-skip-permissions -p 'Create a hello world index.html'",
     timeout=0,
 )
 print(result.stdout)
