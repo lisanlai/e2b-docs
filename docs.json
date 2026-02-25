@@ -99,6 +99,7 @@
               "docs/sandbox/lifecycle-events-api",
               "docs/sandbox/lifecycle-events-webhooks",
               "docs/sandbox/persistence",
+              "docs/sandbox/snapshots",
               "docs/sandbox/git-integration",
               "docs/sandbox/metrics",
               "docs/sandbox/metadata",

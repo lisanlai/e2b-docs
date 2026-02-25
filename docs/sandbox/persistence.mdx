@@ -17,14 +17,28 @@ This includes not only state of the sandbox's filesystem but also the sandbox's 
 
 Understanding how sandboxes transition between different states is crucial for managing their lifecycle effectively. Here's a diagram showing the possible state transitions:
 
-<Frame>
-<img src="/images/diagram.png" />
-</Frame>
+```mermaid actions={false}
+flowchart TD
+    start(( )) -->|Sandbox.create| Running
+
+    Running["<b>Running</b><br/>• Active execution<br/>• Consumes resources"]
+    Paused["<b>Paused</b><br/>• Preserves memory and files<br/>• Cannot execute code"]
+    Snapshotting["<b>Snapshotting</b><br/>• Creates persistent snapshot<br/>• Briefly pauses execution"]
+    Killed["<b>Killed</b><br/>• Resources released<br/>• Cannot be resumed"]
+
+    Running -->|pause| Paused
+    Running -->|createSnapshot| Snapshotting
+    Paused -->|connect| Running
+    Snapshotting -->|snapshot complete| Running
+    Running -->|kill| Killed
+    Paused -->|kill| Killed
+```
 
 ### State descriptions
 
 - **Running**: The sandbox is actively running and can execute code. This is the initial state after creation.
 - **Paused**: The sandbox execution is suspended but its state is preserved.
+- **Snapshotting**: The sandbox is briefly paused while a persistent snapshot is being created. It automatically returns to Running. See [Snapshots](/docs/sandbox/snapshots).
 - **Killed**: The sandbox is terminated and all resources are released. This is a terminal state.
 
 ### Changing sandbox's state
