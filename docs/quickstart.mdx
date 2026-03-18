@@ -15,13 +15,16 @@ Every new E2B account get $100 in credits. You can sign up [here](https://e2b.de
 ```bash .env
 E2B_API_KEY=e2b_***
 ```
+
 </Step>
 <Step title="Install E2B SDK">
 Install the E2B SDK to your project by running the following command in your terminal.
 <CodeGroup>
-```javascript JavaScript & TypeScript
+
+```javascript 
 npm i @e2b/code-interpreter dotenv
 ```
+
 ```python Python
 pip install e2b-code-interpreter python-dotenv
 ```
@@ -30,7 +33,7 @@ pip install e2b-code-interpreter python-dotenv
 <Step title="Write code for starting sandbox">
 We'll write the minimal code for starting Sandbox, executing Python inside it and listing all files inside the root directory.
 <CodeGroup>
-```javascript JavaScript & TypeScript
+```javascript
 // index.ts
 import 'dotenv/config'
 import { Sandbox } from '@e2b/code-interpreter'
@@ -60,9 +63,10 @@ print(files)
 <Step title="Start your first E2B sandbox">
 Run the code with the following command:
 <CodeGroup>
-```bash JavaScript & TypeScript
+```bash
 npx tsx ./index.ts
 ```
+
 ```bash Python
 python main.py
 ```
